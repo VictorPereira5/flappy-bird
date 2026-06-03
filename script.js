@@ -1,11 +1,15 @@
-console.log('Flappy Bird');
+console.log('[Flappy Bird');
+
+let frames = 0;
+const som_HIT = new Audio();
+som_HIT.src = './efeitos/hit.wav';
 
 let frames = 0;
 const som_HIT = new Audio();
 som_HIT.src = './efeitos/hit.wav';
 
 const sprites = new Image();
-sprites.src = 'sprites.png';
+sprites.src = './sprites.png';
 
 const canvas = document.querySelector('canvas');
 const contexto = canvas.getContext('2d');
@@ -54,11 +58,6 @@ function criaChao() {
       const movimentoDoChao = 1;
       const repeteEm = chao.largura / 2;
       const movimentacao = chao.x - movimentoDoChao;
-
-      // console.log('[chao.x]', chao.x);
-      // console.log('[repeteEm]',repeteEm);
-      // console.log('[movimentacao]', movimentacao % repeteEm);
-      
       chao.x = movimentacao % repeteEm;
     },
     desenha() {
@@ -132,8 +131,7 @@ function criaFlappyBird() {
     atualizaOFrameAtual() {     
       const intervaloDeFrames = 10;
       const passouOIntervalo = frames % intervaloDeFrames === 0;
-      // console.log('passouOIntervalo', passouOIntervalo)
-
+    
       if(passouOIntervalo) {
         const baseDoIncremento = 1;
         const incremento = baseDoIncremento + flappyBird.frameAtual;
@@ -319,7 +317,7 @@ function criaPlacar() {
         placar.pontuacao = placar.pontuacao + 1;
       }
     }
-  }
+  };
   return placar;
 }
 
@@ -335,7 +333,7 @@ function mudaParaTela(novaTela) {
   if(telaAtiva.inicializa) {
     telaAtiva.inicializa();
   }
-}
+}; 
 
 const Telas = {
   INICIO: {
@@ -392,7 +390,7 @@ Telas.GAME_OVER = {
   click() {
     mudaParaTela(Telas.INICIO);
   }
-}
+};
 
 function loop() {
 
@@ -401,7 +399,7 @@ function loop() {
 
   frames = frames + 1;
   requestAnimationFrame(loop);
-}
+};
 
 
 window.addEventListener('click', function() {
